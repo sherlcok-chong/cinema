@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<head>
+    <title>乐玄电影 - 一网打尽好电影</title>
+    <link type="text/css" rel="stylesheet" href="/static/css/myOrder.css">
+
+</head>
+<body>
+
+
+<div class="header">
+    <div class="header-inner">
+        <a href="//maoyan.com" class="logo" data-act="icon-click">猫眼电影</a>
+        <div class="city-container" data-val="{currentcityid:42 }">
+            <div class="city-selected">
+                <div class="city-name">
+                    西安
+                    <span class="caret"></span>
+                </div>
+            </div>
+            <div class="city-list" data-val="{ localcityid: 42 }">
+                <div class="city-list-header">定位城市：<a class="js-geo-city" data-ci="42">西安</a></div>
+
+            </div>
+        </div>
+
+
+        <div class="nav">
+            <ul class="navbar">
+                <li><a href="/main" data-act="home-click">首页</a></li>
+                <li><a href="/" data-act="movies-click">电影</a></li>
+                <li><a href="/" data-act="cinemas-click">影院</a></li>
+                <li><a href="http://www.gewara.com">演出</a></li>
+
+                <li><a href="/" data-act="board-click">榜单</a></li>
+                <li><a href="/" data-act="hotNews-click">热点</a></li>
+                <li><a href="/">商城</a></li>
+            </ul>
+        </div>
+
+        <div class="user-info">
+            <div class="user-avatar has-login">
+                <img src="https://img.meituan.net/maoyanuser/b6f889189fcccefa4b676e2cee38dfe65781.jpg">
+                <span class="caret"></span>
+                <ul class="user-menu yes-login-menu">
+                    <li class="text"><a href="/myOrders">我的订单</a></li>
+                    <!--          <li class="text login-name" title="苍玄"><a href="javascript:void 0">基本信息</a></li>-->
+                    <li class="text"><a href="/logout">退出登录</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <form action="/" target="_blank" class="search-form" data-actform="search-click"  method="post">
+            <input name="kw" class="search" type="search" maxlength="32" placeholder="找影视剧、影人、影院" autocomplete="off">
+            <input class="submit" type="submit" value="">
+        </form>
+
+        <div class="app-download">
+            <a href="/" target="_blank">
+                <span class="iphone-icon"></span>
+                <span class="apptext">APP下载</span>
+                <span class="caret"></span>
+                <div class="download-icon">
+                    <p class="down-title">扫码下载APP</p>
+                    <p class='down-content'>选座更优惠</p>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+<div class="header-placeholder"></div>
+
+
+<div class="container" id="app">
+    <div class="content">
+        <div class="main">
+            <div class="info-content clearfix">
+                <div class="user-profile-nav">
+                    <h1>个人中心</h1>
+                    <a href="/myOrders" class="orders active">我的订单</a>
+                    <!--          <a href="/profile" class="profile ">基本信息</a>-->
+                </div>
+
+                <div class="orders-container">
+                    <div class="profile-title">我的订单</div>
+                    {{range.}}
+                    <div class="order-box" data-orderid="22355032693">
+                        <div class="order-header">
+                            <span class="order-date">2021-03-26</span>
+                            <span class="order-id">猫眼订单号:{{.OrderID}}</span>
+                            <a class="del-order" href="/refundTic?orderID={{.OrderID}}"></a>
+                        </div>
+
+                        <div class="order-body">
+                            <div class="poster">
+                                <img src="{{.ImgPath}}" style="height: 91px;width: 66px">
+                            </div>
+
+                            <div class="order-content">
+                                <div class="movie-name">《{{.MovieName}}》</div>
+                                <div class="cinema-name">乐玄影城</div>
+                                <div class="hall-ticket">
+                                    <span>{{.Hall}}号厅</span>
+                                    <span>{{.Row}}排{{.Line}}座</span>
+                                </div>
+                                <div class="show-time">{{.Time}}</div>
+                            </div>
+
+                            <div class="order-price">￥{{.Money}}</div>
+
+                            <div class="order-status">
+                                {{if.Flag}}
+                                <a href="/refundTic?orderID={{.OrderID}}">退票</a>
+                                {{else}}
+                                已完成
+                                {{end}}
+                            </div>
+
+                            <div class="actions">
+                                <div>
+                                    <a href="/order/detail/22355032693" class="order-detail"
+                                       data-act="orders-detail-click" data-bid="b_y190atas">查看详情</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{end}}
+
+                    <div class="orders-pager">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="mask3">
+        <div class="modal-container" style="display:none">
+            <div class="modal">
+                <span class="icon"></span>
+
+                <p class="tip">您确定要删除该订单嘛？删除后，不可恢复～</p>
+
+                <div class="short btn ok-btn">确定</div>
+                <div class="short btn cancel-btn">取消</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class='mask1'>
+        <div class="modal-container" style="display:none">
+            <div class="modal">
+                <span class="icon"></span>
+
+                <p class="tip">请注意，注销账号会清空所有订单信息、影评、积分、<br>账户余额等信息且无法找回，是否继续？</p>
+
+                <div class="short btn ok-btn">确定</div>
+                <div class="short btn cancel-btn">取消</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class='mask2'>
+
+
+    </div>
+
+</div>
+
+<div class="footer">
+
+</div>
+<script>
+    document.getElementsByClassName("del-order")[0] = function () {
+        window.location.href = "/myOrders"
+    }
+</script>
+</body>
+</html>

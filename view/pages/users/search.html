@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+
+<head>
+  <title>猫眼电影</title>
+
+  <link type="text/css" rel="stylesheet" href="/static/css/search.css">
+
+</head>
+<body>
+
+
+<div class="header">
+  <div class="header-inner">
+    <a href="//maoyan.com" class="logo" data-act="icon-click">猫眼电影</a>
+    <div class="city-container" data-val="{currentcityid:42 }">
+      <div class="city-selected">
+        <div class="city-name">
+          西安
+          <span class="caret"></span>
+        </div>
+      </div>
+      <div class="city-list" data-val="{ localcityid: 42 }">
+        <div class="city-list-header">定位城市：<a class="js-geo-city" data-ci="42">西安</a></div>
+
+      </div>
+    </div>
+
+
+    <div class="nav">
+      <ul class="navbar">
+        <li><a href="/main" data-act="home-click"  >首页</a></li>
+        <li><a href="/" data-act="movies-click" >电影</a></li>
+        <li><a href="/" data-act="cinemas-click" >影院</a></li>
+        <li><a href="http://www.gewara.com">演出</a></li>
+
+        <li><a href="/" data-act="board-click" >榜单</a></li>
+        <li><a href="/" data-act="hotNews-click" >热点</a></li>
+        <li><a href="/"  >商城</a></li>
+      </ul>
+    </div>
+
+    <div class="user-info">
+      <div class="user-avatar J-login">
+        <img src="https://p0.meituan.net/movie/7dd82a16316ab32c8359debdb04396ef2897.png">
+        <span class="caret"></span>
+
+          <ul class="user-menu no-login-menu">
+            <li class="text"><a href="/myOrders">我的订单</a></li>
+            <!--                    <li class="text login-name" title="苍玄"><a href="javascript:void 0">基本信息</a></li>-->
+            <li class="text"><a href="/logout">退出登录</a></li>
+          </ul>
+
+      </div>
+    </div>
+
+    <form action="/query" target="_blank" class="search-form" data-actform="search-click" method="post">
+      <input name="kw" class="search" type="text" maxlength="32" placeholder="找影视剧、影人、影院" autocomplete="off">
+      <input class="submit" type="submit" value="">
+    </form>
+
+    <div class="app-download">
+      <a href="/app" target="_blank">
+        <span class="iphone-icon"></span>
+        <span class="apptext">APP下载</span>
+        <span class="caret"></span>
+        <div class="download-icon">
+          <p class="down-title">扫码下载APP</p>
+          <p class='down-content'>选座更优惠</p>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>
+<div class="header-placeholder"></div>
+
+<div class="search-box">
+  <form action="/query" class="search-form" data-actform="query-search-click">
+    <input class="kw" type="text" name="kw" maxlength="32" value="" placeholder="找影视剧、影人、影院" autocomplete="off">
+    <button class="submit" type="submit"></button>
+  </form>
+</div>
+<div class="subnav">
+  <ul class="navbar">
+    <li>
+      影视剧（104）
+    </li>
+  </ul>
+</div>
+
+
+<div class="container" id="app" class="page-query/index" >
+  <div class="search-result-box">
+    <dl class="movie-list">
+      {{range.}}
+      <dd>
+        <div class="movie-item film-channel">
+          <a href="/buyTicket?movieName={{.MovieName}}" target="_blank" data-act="movie-click" data-val="{movieid:1218188}">
+            <div class="movie-poster">
+
+              <img src="{{.ImgPath}}" alt="怒火·重案海报封面" />
+            </div>
+          </a>
+
+          <div class="movie-ver"><i class="imax2d"></i></div>
+          <div class="movie-item-hover">
+            <a href="/buyTicket?movieName={{.MovieName}}" target="_blank" data-act="movie-click" data-val="{movieid:1218188}">
+              <img class="movie-hover-img" src="{{.ImgPath}}" alt="怒火·重案" />
+              <div class="movie-hover-info">
+                <div class="movie-hover-title" title="怒火·重案" >
+                  <span class="name ">{{.}}</span>
+                  <span class="score channel-detail-orange"><i class="integer">9.</i><i class="fraction">5</i></span>
+                </div>
+                <div class="movie-hover-title" title="怒火·重案" >
+
+                </div>
+                <div class="movie-hover-title" title="怒火·重案" >
+
+                </div>
+                <div class="movie-hover-title movie-hover-brief" title="怒火·重案" >
+                  <span class="hover-tag">上映时间:</span>
+                  {{.ReleaseTime}}
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="channel-detail movie-item-title" title="怒火·重案">
+          <a href="/buyTicket?movieName={{.MovieName}}" target="_blank" data-act="movies-click" data-val="{movieId:1218188}">{{.MovieName}}</a>
+        </div>
+        <div class="movie-item-subtitle"></div>
+        <div class="absolute-info">
+          <div class="channel-detail channel-detail-orange"><i class="integer">{{.MovieGrade}}</i></div>
+
+          <div class="movie-item-cat"></div>
+          <div class="movie-item-pub">2021-07-30 08:00中国大陆上映</div>
+        </div>
+        {{end}}
+
+    </dl>
+
+    <div class="pager">
+
+
+
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+
+  <div class="certificate">
+
+  </div>
+</div>
+</body>
+</html>

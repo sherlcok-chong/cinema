@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<head>
+    <title>选座 一网打尽好电影</title>
+
+
+    <link rel="stylesheet" href="/static/css/sit.css"/>
+
+</head>
+<body>
+
+
+<div class="header" id="{{.Perf.PerfID}}">
+    <div class="header-inner">
+        <a href="//maoyan.com" class="logo" data-act="icon-click">猫眼电影</a>
+        <div class="city-container" data-val="{currentcityid:42 }">
+            <div class="city-selected">
+                <div class="city-name">
+                    西安
+                    <span class="caret"></span>
+                </div>
+            </div>
+            <div class="city-list" data-val="{ localcityid: 42 }">
+                <div class="city-list-header">定位城市：<a class="js-geo-city" data-ci="42">西安</a></div>
+
+            </div>
+        </div>
+
+
+        <div class="nav">
+            <ul class="navbar">
+                <li><a href="/main" data-act="home-click">首页</a></li>
+                <li><a href="/films" data-act="movies-click">电影</a></li>
+                <li><a href="/cinemas" data-act="cinemas-click">影院</a></li>
+                <li><a href="http://www.gewara.com">演出</a></li>
+
+                <li><a href="/board" data-act="board-click">榜单</a></li>
+                <li><a href="/news" data-act="hotNews-click">热点</a></li>
+                <li><a href="/edimall">商城</a></li>
+            </ul>
+        </div>
+
+        <div class="user-info">
+            <div class="user-avatar J-login">
+                <img src="https://p0.meituan.net/movie/7dd82a16316ab32c8359debdb04396ef2897.png">
+                <span class="caret"></span>
+                <ul class="user-menu no-login-menu">
+                    <li class="text"><a href="/myOrders">我的订单</a></li>
+<!--                    <li class="text login-name" title="苍玄"><a href="javascript:void 0">基本信息</a></li>-->
+                    <li class="text"><a href="/logout">退出登录</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <form action="/query" target="_blank" class="search-form" data-actform="search-click"  method="post">
+            <input name="kw" class="search" type="search" maxlength="32" placeholder="找影视剧、影人、影院" autocomplete="off">
+            <input class="submit" type="submit" value="">
+        </form>
+
+        <div class="app-download">
+            <a href="/app" target="_blank">
+                <span class="iphone-icon"></span>
+                <span class="apptext">APP下载</span>
+                <span class="caret"></span>
+                <div class="download-icon">
+                    <p class="down-title">扫码下载APP</p>
+                    <p class='down-content'>选座更优惠</p>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+<div class="header-placeholder"></div>
+
+
+<div class="container" id="app" class="page-cinemas/seat">
+    <div class="order-progress-bar">
+        <div class="step first done">
+            <span class="step-num">1</span>
+            <div class="bar"></div>
+            <span class="step-text">选择影片场次</span>
+        </div>
+        <div class="step done">
+            <span class="step-num">2</span>
+            <div class="bar"></div>
+            <span class="step-text">选择座位</span>
+        </div>
+        <div class="step ">
+            <span class="step-num">3</span>
+            <div class="bar"></div>
+            <span class="step-text">14分钟内付款</span>
+        </div>
+        <div class="step last ">
+            <span class="step-num">4</span>
+            <div class="bar"></div>
+            <span class="step-text">影院取票观影</span>
+        </div>
+    </div>
+
+
+    <div class="main clearfix">
+        <div class="hall">
+            <div class="seat-example">
+                <div class="selectable-example example">
+                    <span>可选座位</span>
+                </div>
+                <div class="sold-example example">
+                    <span>已售座位</span>
+                </div>
+                <div class="selected-example example">
+                    <span>已选座位</span>
+                </div>
+                <div class="couple-example example">
+                    <span>情侣座位</span>
+                </div>
+            </div>
+
+
+            <div class="seats-block" data-cols="9" data-section-id="0000000000000001" data-section-name="普通区"
+                 data-seq-no="202108020468486">
+                <div class="row-id-container">
+                    <span class="row-id">1</span>
+                    <span class="row-id">2</span>
+                    <span class="row-id">3</span>
+                    <span class="row-id">4</span>
+                    <span class="row-id">5</span>
+                    <span class="row-id">6</span>
+                </div>
+
+                <div class="seats-container">
+                    <div class="screen-container">
+                        <div class="screen">银幕中央</div>
+                        <div class="c-screen-line"></div>
+                    </div>
+
+                    <div class="seats-wrapper">
+                        <div class="row">
+                            {{range.SitOne}}
+                            <span class="seat {{.Flag}} cli"
+                                  id="{{.Row}}{{.Line}}"
+                                  name="cli"
+                            ></span>
+                            {{end}}
+
+                        </div>
+                        <div class="row">
+
+                            {{range.SitTwo}}
+                            <span class="seat {{.Flag}} cli"
+                                  id="{{.Row}}{{.Line}}"
+                                  name="cli"
+                            ></span>
+                            {{end}}
+                        </div>
+                        <div class="row">
+                            {{range.SitThree}}
+                            <span class="seat {{.Flag}} cli"
+                                  id="{{.Row}}{{.Line}}"
+                                  name="cli"
+                            ></span>
+                            {{end}}
+                        </div>
+                        <div class="row">
+                            {{range.SitFour}}
+                            <span class="seat {{.Flag}} cli"
+                                  id="{{.Row}}{{.Line}}"
+                                  name="cli"
+                            ></span>
+                            {{end}}
+                        </div>
+                        <div class="row">
+                            {{range.SitFive}}
+                            <span class="seat {{.Flag}} cli"
+                                  id="{{.Row}}{{.Line}}"
+                                  name="cli"
+                            ></span>
+                            {{end}}
+                        </div>
+                        <div class="row">
+                            {{range.SitSix}}
+                            <span class="seat {{.Flag}} cli"
+                                  id="{{.Row}}{{.Line}}"
+                                  name="cli"
+                            ></span>
+                            {{end}}
+                        </div>
+                        <div class="row">
+                            {{range.SitSeven}}
+                            <span class="seat {{.Flag}} cli"
+                                  id="{{.Row}}{{.Line}}"
+
+                            ></span>
+                            {{end}}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="side">
+            <div class="movie-info clearfix">
+                <div class="poster">
+                    <img src="{{.Perf.ImgPath}}">
+                </div>
+                <div class="content">
+                    <p class="name text-ellipsis">{{.Perf.MovieName}}</p>
+                    <div class="info-item">
+                        <span>类型 :</span>
+                        <span class="value">动漫</span>
+                    </div>
+                    <div class="info-item">
+                        <span>时长 :</span>
+                        <span class="value">128分钟</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="show-info">
+                <div class="info-item">
+                    <span>影院 :</span>
+                    <span class="value text-ellipsis">香港未来主题影院</span>
+                </div>
+                <div class="info-item">
+                    <span>影厅 :</span>
+                    <span class="value text-ellipsis">{{.Perf.Halls}}号厅（若3D影片建议自备3D眼镜）</span>
+                </div>
+                <div class="info-item">
+                    <span>版本 :</span>
+                    <span class="value text-ellipsis">{{.Perf.ElseSpe}}</span>
+                </div>
+                <div class="info-item">
+                    <span>场次 :</span>
+                    <span class="value text-ellipsis screen">{{.Perf.StartTime}}</span>
+                </div>
+                <div class="info-item">
+                    <span>票价 :</span>
+                    <span class="value text-ellipsis">￥<span class="pp">{{.Perf.Money}}</span>张</span>
+                </div>
+            </div>
+
+            <div class="ticket-info">
+                <div class="no-ticket" style="display: block;">
+                    <p class="buy-limit">座位：一次最多选4个座位</p>
+                    <p class="no-selected">请<span>点击左侧</span>座位图选择座位</p>
+                </div>
+                <div class="has-ticket" style="display: none;">
+                    <span class="text">座位：<span class="myTic">qwe </span></span>
+                    <div class="ticket-container" data-limit="4">
+
+                    </div>
+                </div>
+
+                <div class="total-price">
+                    <span>总价 :</span>
+                    <span class="price">0</span>
+                </div>
+            </div>
+
+            <div class="confirm-order">
+                <div id="iLoginComp" style="visibility: visible">
+                    <div class="iLoginComp-wrapper" id="iLoginCompInner">
+                        <div class="iLogincomp-opbtn-wrapper">
+                            <button class="iLoginComp-login-btn-wrapper confirmSit">确认选座</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<script src="/static/script/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+
+    let cnt = 0
+    r = document.getElementsByClassName("cli")
+    for (let i = 0; i < r.length; i++) {
+        r[i].onclick = function () {
+            if (r[i].className === "seat selectable cli") {
+                if (cnt < 4) {
+                    r[i].className = "seat selected cli"
+                    cnt++
+                }
+            } else if (r[i].className === "seat selected cli") {
+                r[i].className = "seat selectable cli"
+                cnt--
+            }
+            p = document.getElementsByClassName("no-ticket")[0]
+            if (cnt === 0) {
+                p.style.display = "block"
+            } else {
+                p.style.display = "none"
+            }
+            q = document.getElementsByClassName("has-ticket")[0]
+            if (cnt === 0) {
+                q.style.display = "none"
+            } else {
+                q.style.display = "block"
+            }
+            s = document.getElementsByClassName("price")[0]
+            money = document.getElementsByClassName("pp")[0].innerText
+            s.innerHTML = "" + money * cnt
+            buyTic = document.getElementsByClassName("confirmSit")[0]
+            if (cnt > 0) {
+                buyTic.onclick = function () {
+
+
+                    function PostHandle(url, data, callback) {
+                        $.ajax({
+                            type: "Post",
+                            url: url,
+                            data: data,
+                            dataType: 'json',
+                            async: false,
+                            success: callback
+                        });
+                    }
+                    head = document.getElementsByClassName("header")[0]
+                    perfID = head.id
+                    var arr = new Array(); //arr是你想要传递的数组，自己定义即可
+                    for (let i = 0; i < r.length; i++) {
+                        if (r[i].className === "seat selected cli") {
+                            arr[arr.length] = r[i].id
+                        }
+
+                    }
+                    PostHandle("/getTic?perfID="+perfID, {"arr":JSON.stringify(arr)}, function (result) {
+                        window.location.href="/confirmTic"
+                    });
+                }
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

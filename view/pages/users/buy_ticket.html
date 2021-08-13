@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<head>
+  <title>电影票_特惠购票_低价订票-猫眼电影</title>
+
+  <link type="text/css" rel="stylesheet" href="/static/css/bTick.css">
+  <link type="text/css" rel="stylesheet" href="/static/css/TicTime.css">
+
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <a href="/main" class="logo" data-act="icon-click">猫眼电影</a>
+    <div class="city-container" data-val="{currentcityid:42 }">
+      <div class="city-selected">
+        <div class="city-name">
+
+          <span class="caret"></span>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="nav">
+      <ul class="navbar">
+        <li><a href="/main" data-act="home-click"  >首页</a></li>
+        <li><a href="/films" data-act="movies-click" >电影</a></li>
+        <li><a href="/cinemas" data-act="cinemas-click"  class="active" >影院</a></li>
+        <li><a href="http://www.gewara.com">演出</a></li>
+
+        <li><a href="/board" data-act="board-click" >榜单</a></li>
+        <li><a href="/news" data-act="hotNews-click" >热点</a></li>
+        <li><a href="/edimall"  >商城</a></li>
+      </ul>
+    </div>
+
+    <div class="user-info">
+      <div class="user-avatar J-login">
+        <img src="https://p0.meituan.net/movie/7dd82a16316ab32c8359debdb04396ef2897.png">
+        <span class="caret"></span>
+        <ul class="user-menu no-login-menu">
+          <li class="text"><a href="/myOrders">我的订单</a></li>
+<!--          <li class="text login-name" title="苍玄"><a href="javascript:void 0">基本信息</a></li>-->
+          <li class="text"><a href="/logout">退出登录</a></li> 
+        </ul>
+      </div>
+    </div>
+
+    <form action="/query" target="_blank" class="search-form" data-actform="search-click"  method="post">
+      <input name="kw" class="search" type="search" maxlength="32" placeholder="找影视剧、影人、影院" autocomplete="off">
+      <input class="submit" type="submit" value="">
+    </form>
+
+    <div class="app-download">
+      <a href="/app" target="_blank">
+        <span class="iphone-icon"></span>
+        <span class="apptext">APP下载</span>
+        <span class="caret"></span>
+        <div class="download-icon">
+          <p class="down-title">扫码下载APP</p>
+          <p class='down-content'>选座更优惠</p>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>
+<div class="header-placeholder"></div>
+
+<div class="banner">
+  <div class="wrapper clearfix">
+    <div class="celeInfo-left">
+      <div class="avatar-shadow">
+        <img class="avatar" src="{{.ImgPath}}" >
+        <div class="movie-ver"><i class="imax2d"></i></div>
+      </div>
+    </div>
+    <div class="celeInfo-right clearfix">
+      <div class="movie-brief-container" >
+        <h1 class="name" style="color: #0d0a0a;">{{.MovieName}}</h1>
+        <div class="ename ellipsis">RAGING FIRE</div>
+        <ul>
+          <li class="ellipsis">
+            <a class="text-link" href="/films?catId="  target="_blank"> 动作 </a>
+            <a class="text-link" href="/films?catId="  target="_blank"> 犯罪 </a>
+          </li>
+          <li class="ellipsis">
+            中国香港,中国大陆
+            / 128分钟
+          </li>
+          <li class="ellipsis" style="color: #0d0a0a">2021-{{.ReleaseTime}} 08:00中国大陆上映</li>
+        </ul>
+      </div>
+      <div class="action-buyBtn">
+        <div class="action clearfix" data-val="{movieid:1218188}">
+          <a class="wish " data-wish="false" data-score="" data-bid="b_gbxqtw6x">
+            <div>
+              <i class="icon wish-icon"></i>
+              <span class="wish-msg" data-act="wish-click">想看</span>
+            </div>
+          </a>
+          <a class="score-btn " data-bid="b_rxxpcgwd">
+            <div>
+              <i class="icon score-btn-icon"></i>
+              <span class="score-btn-msg" data-act="comment-open-click">
+                评分
+            </span>
+            </div>
+          </a>
+        </div>
+        <a class="btn buy" href="/films/1218188" target="_blank" data-act="more-detail-click" data-bid="b_ozuzh4j4">查看更多电影详情</a>
+      </div>
+
+      <div class="movie-stats-container">
+
+        <div class="movie-index">
+          <p class="movie-index-title">猫眼口碑</p>
+          <div class="movie-index-content score normal-score">
+              <span class="index-left info-num ">
+                <span class="stonefont">{{.MovieGrade}}</span>
+              </span>
+            <div class="index-right">
+              <div class='star-wrapper'>
+                <div class="star-on" style="width:95%;"></div>
+              </div>
+              <span class='score-num'><span class="stonefont">&#xe8cd;&#xe343;&#xf4ef;&#xe5e2;&#xe8cd;</span>人评分</span>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="movie-index">
+          <p class="movie-index-title" style="color: #0d0a0a">累计票房</p>
+          <div class="movie-index-content box">
+            <span class="stonefont" style="color: #0d0a0a">{{.BoxOffice}}</span><span class="unit" style="color: #0d0a0a">万</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="container" id="ap" class="page-cinemas/list" >
+
+
+  <div class="cinemas-list">
+    <h2 class="cinemas-list-header">
+      <span>场次列表</span>
+    </h2>
+    {{range.PerfPlans}}
+    <div class="cinema-cell">
+      <div class="cinema-info">
+        <a href="/cinema/11533?poi=40568554&amp;movieId=1218188" class="cinema-name" data-act="cinema-name-click" data-bid="b_wek7vrx9" data-val="{city_id: 42, cinema_id: 11533}">{{.MovieName}}</a>
+<!--        <p class="cinema-address">散场时间</p>-->
+
+        <p class="cinema-address" style="color: #ff6700">{{.ElseSpe}}</p>
+      </div>
+      {{.Halls}}号厅
+      <div class="buy-btn">
+        <a href="/setSit?perfID={{.PerfID}}" data-act="buy-btn-click" data-val="{city_id: 42, cinema_id: 11533}" data-bid="b_wek7vrx9">选座购票</a>
+      </div>
+
+      <div class="price">
+        <span class="rmb red">￥</span>
+        <span class="price-num red"><span class="stonefont">{{.Money}}</span></span>
+        <span>起</span>
+
+      </div>
+      {{end}}
+    </div>
+
+    <div class="container" id="app" class="page-cinemas/cinema" >
+  </div>
+
+</body>
+</html>

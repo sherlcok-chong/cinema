@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+
+<head>
+  <title>支付  - 一网打尽好电影</title>
+  <link type="text/css" rel="stylesheet" href="/static/css/cTic.css">
+
+
+
+</head>
+<body>
+
+
+<div class="header">
+  <div class="header-inner">
+    <a href="/main" class="logo" data-act="icon-click">猫眼电影</a>
+    <div class="city-container" data-val="{currentcityid:42 }">
+      <div class="city-selected">
+        <div class="city-name">
+          西安
+          <span class="caret"></span>
+        </div>
+      </div>
+      <div class="city-list" data-val="{ localcityid: 42 }">
+        <div class="city-list-header">定位城市：<a class="js-geo-city" data-ci="42">西安</a></div>
+
+      </div>
+    </div>
+
+
+    <div class="nav">
+      <ul class="navbar">
+        <li><a href="/main" data-act="home-click"  >首页</a></li>
+        <li><a href="/films" data-act="movies-click" >电影</a></li>
+        <li><a href="/cinemas" data-act="cinemas-click" >影院</a></li>
+        <li><a href="http://www.gewara.com">演出</a></li>
+
+        <li><a href="/board" data-act="board-click" >榜单</a></li>
+        <li><a href="/news" data-act="hotNews-click" >热点</a></li>
+        <li><a href="/edimall"  >商城</a></li>
+      </ul>
+    </div>
+
+    <div class="user-info">
+      <div class="user-avatar has-login">
+        <img src="https://img.meituan.net/maoyanuser/b6f889189fcccefa4b676e2cee38dfe65781.jpg">
+        <span class="caret"></span>
+        <ul class="user-menu yes-login-menu">
+          <li class="text"><a href="/myOrders">我的订单</a></li>
+<!--          <li class="text login-name" title="苍玄"><a href="javascript:void 0">基本信息</a></li>-->
+          <li class="text"><a href="/logout">退出登录</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <form action="/query" target="_blank" class="search-form" data-actform="search-click"  method="post">
+      <input name="kw" class="search" type="search" maxlength="32" placeholder="找影视剧、影人、影院" autocomplete="off">
+      <input class="submit" type="submit" value="">
+    </form>
+
+    <div class="app-download">
+      <a href="/app" target="_blank">
+        <span class="iphone-icon"></span>
+        <span class="apptext">APP下载</span>
+        <span class="caret"></span>
+        <div class="download-icon">
+          <p class="down-title">扫码下载APP</p>
+          <p class='down-content'>选座更优惠</p>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>
+<div class="header-placeholder"></div>
+
+
+<div class="container" id="app" class="page-order/confirm" >
+  <div class="order-progress-bar">
+    <div class="step first done">
+      <span class="step-num">1</span>
+      <div class="bar"></div>
+      <span class="step-text">选择影片场次</span>
+    </div>
+    <div class="step done">
+      <span class="step-num">2</span>
+      <div class="bar"></div>
+      <span class="step-text">选择座位</span>
+    </div>
+    <div class="step done">
+      <span class="step-num">3</span>
+      <div class="bar"></div>
+      <span class="step-text">14分钟内付款</span>
+    </div>
+    <div class="step last ">
+      <span class="step-num">4</span>
+      <div class="bar"></div>
+      <span class="step-text">影院取票观影</span>
+    </div>
+  </div>
+
+
+  <div class="count-down-wrapper">
+    <div class="count-down" data-payleftseconds="599">
+      <p class="time-left">
+        请在
+        <span class="minute">9</span>
+        分钟
+        <span class="second">59</span>秒内完成支付
+      </p>
+      <p class="tip">超时订单会自动取消，如遇支付问题，请致电猫眼客服：1010-5335</p>
+    </div>
+  </div>
+
+  <p class="warning">请仔细核对场次信息，出票后将<span class="attention">无法退票和改签</span></p>
+
+  <table class="order-table">
+    <thead>
+    <tr>
+      <th>影片</th>
+      <th>时间</th>
+      <th>影院</th>
+      <th>座位</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{range.}}
+    <tr class="money" id="{{.Money}}">
+      <td class="movie-name">《{{.MovieName}}》</td>
+      <td class="showtime"> {{.Time}}</td>
+      <td class="cinema-name">乐玄</td>
+      <td>
+        <span class="hall">{{.Hall}}号JBL厅</span>
+        <div class="seats">
+          <div>
+            <span class=""><i>{{.Row}}</i>排<i>{{.Line}}</i>座</span>
+          </div>
+          <div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    {{end}}
+    </tbody>
+  </table>
+
+
+  <div class="right">
+    <div class="price-wrapper">
+      <span>实际支付 :</span>
+      <span class="price" >34</span>
+    </div>
+    <div><div class="pay-btn" data-order-id="22530956425" data-act="pay-click" data-bid="b_u30afks6">确认支付</div></div>
+  </div>
+
+
+
+</div>
+
+<div class="footer">
+</div>
+<script>
+     all=document.getElementsByClassName("money")
+     total=document.getElementsByClassName("price")[0]
+     total.innerHTML=""+all.length*all[0].id
+     document.getElementsByClassName("pay-btn")[0].onclick=function (){
+
+       window.location.href="/buyOk"
+     }
+</script>
+</body>
+</html>

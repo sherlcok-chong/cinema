@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>删除场次</title>
+  <style>
+    .table {
+      margin: 0 auto;
+      border: 1px solid black;
+      width: 900px;
+      font-size: 25px;
+    }
+    .table td{
+      width: 300px;
+      text-align: center;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+<div><a style="text-decoration: none " onclick=ret() href="#">返回</a> <a href="/logout" style="text-decoration: none ">退出登录</a>
+  <table class="table">
+        <thead style="background-color:skyblue">
+          <tr>
+            <td>电影名</td>
+            <td>开始时间</td>
+            <td>影厅</td>
+            <td>操作</td>
+          </tr>
+        </thead>
+        <tbody>
+        {{range.Plans}}
+        <tr>
+          <td>{{.MovieName}}</td>
+          <td>{{.StartTime}}</td>
+          <td>{{.Halls}}</td>
+          <td><a href="/deletePlan?perfID={{.PerfID}}"> 删除 </a></td>
+        </tr>
+        {{end}}
+        </tbody>
+  </table>
+    <p style="font-size: 30px;color:red;;">{{.Flag}}</p>
+</body>
+</html>

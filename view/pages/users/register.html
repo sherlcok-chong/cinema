@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>注册</title>
+  <link type="text/css" rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="xiao_si"></div>
+
+<div class="login_banner">
+
+  <div id="l_content">
+    <span class="login_word">欢迎注册</span>
+  </div>
+
+  <div id="content">
+    <div class="login_form">
+      <div class="login_box">
+        <div class="tit">
+          <h1>乐玄影院</h1>
+          <a href="/login">立即登录</a>
+
+        </div>
+        <div class="msg_cont">
+          <b></b>
+          <span class="errorMsg">请输入用户名和密码</span>
+        </div>
+        <div class="form">
+          <form action="/register" method="post" id="form">
+            <label>用户名称：</label>
+            <input class="itxt" type="text" placeholder="请输入邮箱" autocomplete="off" tabindex="1"
+                   name="username"/>
+            <input type="button" value="发送验证码">
+            <br/>
+            <br/>
+            <label>用户密码：</label>
+            <input class="itxt" type="password" placeholder="请输入密码" autocomplete="off" tabindex="1"
+                   name="password"/>
+            <br/>
+            <br/>
+            <label>确认密码：</label>
+            <input class="itxt" type="password" placeholder="请输入密码" autocomplete="off" tabindex="1"
+                   id="repassword"/>
+            <br/>
+            <br/>
+            <label>输入邮箱：</label>
+            <input class="itxt" type="text" placeholder="请输入密码" autocomplete="off" tabindex="1"
+                   name="email"/>
+
+<!--            <br/>-->
+<!--            <br/>-->
+<!--            <label>验证码：</label>-->
+<!--            <input class="itxt" type="password" placeholder="请输入密码" autocomplete="off" tabindex="1"-->
+<!--                   name="password"/>-->
+<!--            <br/>-->
+            <br/>
+            <br/>
+            <input type="submit" value="注册" id="sub_btn"/>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function checkUsername(){
+
+    var userName=document.getElementsByName("username")[0].value;
+    var reg_username=/^\w{6,12}$/;
+    var test=reg_username.test(userName);
+    var nameError=document.getElementsByClassName("errorMsg")[0];
+
+    if (!test){
+      nameError.innerHTML="用户名格式错误";
+      // alert("用户名格式错误");
+    }
+
+    return test;
+  }
+
+  function checkPassword(){
+    var password=document.getElementsByName("password")[0].value;
+    var rePassword=document.getElementsByName("repassword")[0].value;
+    var reg_username=/^\w{6,12}$/;
+    var test=reg_username.test(password);
+    var passError=document.getElementsByName("errorMsg")[0];
+    if (!test){
+      passError.innerHTML="密码格式错误";
+      // alert("密码格式错误");
+      return test;
+    }
+    if (password!==rePassword){
+      passError.innerHTML="前后密码不一致";
+      // alert("前后密码不一致");
+
+      return false;
+    }
+    return true;
+  }
+  document.getElementById("form").onsubmit = function (){
+    return checkUsername()&&checkPassword();
+  }
+</script>
+</body>
+</html>
